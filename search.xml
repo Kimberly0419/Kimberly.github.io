@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>C++冒泡排序</title>
+    <url>/2024/05/01/C-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p>作用：最常见的排序算法</p>
+<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><p>每次遍历时，它都会从前往后依次的比较相邻两个数的大小；如果前者比后者大，则交换它们的位置。这样，一次遍历之后，最大的元素就在数列的末尾！ 采用相同的方法再次遍历时，第二大的元素就被排列在最大元素之前。重复此操作，直到整个数列都有序为止！</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span><span class="comment">//冒泡排序算法</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)<span class="comment">//从0 ~ n-1</span></span><br><span class="line">	&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++)<span class="comment">//从0 ~ n-i-1</span></span><br><span class="line">	        &#123;</span><br><span class="line">                    <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) </span><br><span class="line">                        <span class="comment">//如果第i个元素大于第i+1个元素则交换位置</span></span><br><span class="line">			&#123;</span><br><span class="line">                            <span class="type">int</span> temp = arr[j];</span><br><span class="line">                            arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                            arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span> <span class="comment">//循环打印数组</span></span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j= <span class="number">0</span>; j&lt;n; j++)</span><br><span class="line">	&#123;  </span><br><span class="line">           cout&lt;&lt;arr[j] &lt;&lt;<span class="string">&quot;  &quot;</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    cout&lt;&lt;endl;  </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span><span class="comment">//冒泡排序算法</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)<span class="comment">//从0 ~ n-1</span></span><br><span class="line">	&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++)<span class="comment">//从0 ~ n-i-1</span></span><br><span class="line">	        &#123;</span><br><span class="line">                    <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) </span><br><span class="line">                        <span class="comment">//如果第i个元素大于第i+1个元素则交换位置</span></span><br><span class="line">			&#123;</span><br><span class="line">                            <span class="type">int</span> temp = arr[j];</span><br><span class="line">                            arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                            arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="type">int</span> s[<span class="number">10</span>] = &#123;<span class="number">8</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">10</span>,<span class="number">3</span>&#125;;  </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;初始序列：&quot;</span>;  </span><br><span class="line">    <span class="built_in">print</span>(s,<span class="number">10</span>);  </span><br><span class="line">    <span class="built_in">BubbleSort</span>(s,<span class="number">10</span>);  </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;排序结果：&quot;</span>;  </span><br><span class="line">    <span class="built_in">print</span>(s,<span class="number">10</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>C++函数</title>
+    <url>/2024/05/01/C-%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><p>作用：封装代码块。</p>
+<p>定义一个函数一般五个步骤：</p>
+<ol>
+<li><p>返回值类型</p>
+</li>
+<li><p>函数名</p>
+</li>
+<li><p>参数列表</p>
+</li>
+<li><p>函数体语句</p>
+</li>
+<li><p>ruturn表达式</p>
+</li>
+</ol>
+<p>语法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">返回值类型 函数名(参数1, 参数2)&#123;</span></span><br><span class="line"><span class="comment">	//括号里面的参数是形式上的参数，调用的时候才是实际的参数</span></span><br><span class="line"><span class="comment">    函数体语句</span></span><br><span class="line"><span class="comment">        return表达式;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">BubbleSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span><span class="comment">//冒泡排序算法</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)<span class="comment">//从0 ~ n-1</span></span><br><span class="line">	&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++)<span class="comment">//从0 ~ n-i-1</span></span><br><span class="line">	        &#123;</span><br><span class="line">                    <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) </span><br><span class="line">                        <span class="comment">//如果第i个元素大于第i+1个元素则交换位置</span></span><br><span class="line">			&#123;</span><br><span class="line">                            <span class="type">int</span> temp = arr[j];</span><br><span class="line">                            arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                            arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">         &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h2><p>功能：引用定义好的的函数。</p>
+<h2 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h2><ol>
+<li>函数调用时实参数值传入形参</li>
+<li>值传递时，如果形参发生改变，并不影响实参</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//交换num1和num2的值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> num1,<span class="type">int</span> num2)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = num2;</span><br><span class="line">    num1 = num2;</span><br><span class="line">    num1 = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> a = <span class="number">10</span>,b = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">swap</span>(a,b);</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;a = &quot;</span>&lt;&lt;a&lt;&lt;endl;	<span class="comment">// a = 10</span></span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;b = &quot;</span>&lt;&lt;b&lt;&lt;endl;	<span class="comment">// b = 20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数常见样式"><a href="#函数常见样式" class="headerlink" title="函数常见样式"></a>函数常见样式</h2><h3 id="有参有返"><a href="#有参有返" class="headerlink" title="有参有返"></a>有参有返</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">test1</span> <span class="params">(<span class="type">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a;<span class="comment">//返回a的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="有参无返"><a href="#有参无返" class="headerlink" title="有参无返"></a>有参无返</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test2</span><span class="params">(<span class="type">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;This is a: &quot;</span>&lt;&lt; a &lt;&lt;endl;<span class="comment">//没有返回值    </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="无参有返"><a href="#无参有返" class="headerlink" title="无参有返"></a>无参有返</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">test3</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1000</span>;<span class="comment">//返回值是1000</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="无参无返"><a href="#无参无返" class="headerlink" title="无参无返"></a>无参无返</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test4</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;This is test4!&quot;</span>&lt;&lt;endl;<span class="comment">//没有返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><p>作用：告诉编译器函数名称及如何调用函数。函数的实际主题可以单独定义（声明可以多次，定义只能一次）。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>;<span class="comment">//函数声明（java同理）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span>;<span class="comment">//可以声明多次</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">20</span>;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">max</span>(a,b) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//只能定义一次</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数分文件编写"><a href="#函数分文件编写" class="headerlink" title="函数分文件编写"></a>函数分文件编写</h2><p>作用：让代码结构更加清晰</p>
+<ol>
+<li>创建后缀名为.h的头文件</li>
+<li>创建后缀名为.cpp的源文件</li>
+<li>在头文件中写函数的声明</li>
+<li>在源文件中写函数的定义</li>
+</ol>
+<p> 头文件(swap.h文件)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//函数声明</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> &amp;a ,<span class="type">int</span> &amp;b)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>源文件(swap.cpp文件)</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;swap.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> &amp;a,<span class="type">int</span> &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>main.cpp文件</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;swap.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">swap</span>(a, b);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a = &quot;</span> &lt;&lt; a &lt;&lt; endl;<span class="comment">//a = 20 </span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;b = &quot;</span> &lt;&lt; b &lt;&lt; endl;<span class="comment">//b = 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>显示摘要</title>
+    <url>/2024/05/01/%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81/</url>
+    <content><![CDATA[<p>1.配置主题<br>首先打开主题的配置文件_config.yml，该文件在博客文件夹的themes\next_config.yml路径下，打开后找到excerpt_description这个配置并设置为true,如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line">excerpt_description: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+<p>然后还需要对对应对文章进行设置，有两种方法</p>
+<p><strong>方法一：写概述</strong><br>在对应文章对 front-matter（文章文件最上方以 —分割对区域，是用来指定个别文件的配置变量区域）中添加description变量，其中description变量设置的内容就会被显示在首页上门，其余的文案一律不显示。配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo添加分类及标签（在Next主题下）</span><br><span class="line">categories:  Hexo</span><br><span class="line">tags:</span><br><span class="line"></span><br><span class="line">- Hexo</span><br><span class="line">  description: 自建的博客怎么能没有分类和标签呢，所以我就去查了一下怎么去配置分类和标签。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>这一种方法是需要自己写概述，所以比较费事，于是就有了第二种方法。</p>
+<p>方法二：文章截断显示<br>这种方法只需要在对应的文章里，想要展示的文章后添加以下标签就可以了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后首页就会显示在这个标签以上的所有内容，隐藏文章下面的所有内容。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>错误解决</title>
+    <url>/2024/05/01/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<p>﻿<strong>hexo发生error：spawn failed错误的解决方法</strong></p>
+<p>1. 删除 .deploy_git文件夹;</p>
+<p>2. 输入 git config –global core.autocrlf false</p>
+<p>3. 然后，依次执行：</p>
+<p>hexo clean</p>
+<p>hexo g</p>
+<p>hexo d</p>
+]]></content>
+  </entry>
+</search>
