@@ -76,6 +76,18 @@
 ]]></content>
   </entry>
   <entry>
+    <title>错误解决</title>
+    <url>/2024/05/01/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<p>﻿<strong>hexo发生error：spawn failed错误的解决方法</strong></p>
+<p>1. 删除 .deploy_git文件夹;</p>
+<p>2. 输入 git config –global core.autocrlf false</p>
+<p>3. 然后，依次执行：</p>
+<p>hexo clean</p>
+<p>hexo g</p>
+<p>hexo d</p>
+]]></content>
+  </entry>
+  <entry>
     <title>显示摘要</title>
     <url>/2024/05/01/%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81/</url>
     <content><![CDATA[<p>1.配置主题<br>首先打开主题的配置文件_config.yml，该文件在博客文件夹的themes\next_config.yml路径下，打开后找到excerpt_description这个配置并设置为true,如下代码：</p>
@@ -91,18 +103,6 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
 
 <p>然后首页就会显示在这个标签以上的所有内容，隐藏文章下面的所有内容。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>错误解决</title>
-    <url>/2024/05/01/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[<p>﻿<strong>hexo发生error：spawn failed错误的解决方法</strong></p>
-<p>1. 删除 .deploy_git文件夹;</p>
-<p>2. 输入 git config –global core.autocrlf false</p>
-<p>3. 然后，依次执行：</p>
-<p>hexo clean</p>
-<p>hexo g</p>
-<p>hexo d</p>
 ]]></content>
   </entry>
 </search>
