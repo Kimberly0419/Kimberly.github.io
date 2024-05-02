@@ -76,21 +76,15 @@
 ]]></content>
   </entry>
   <entry>
-    <title>显示摘要</title>
-    <url>/2024/05/01/%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81/</url>
-    <content><![CDATA[<p>1.配置主题<br>首先打开主题的配置文件_config.yml，该文件在博客文件夹的themes\next_config.yml路径下，打开后找到excerpt_description这个配置并设置为true,如下代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line">excerpt_description: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-
-<p>然后还需要对对应对文章进行设置，有两种方法</p>
-<p><strong>方法一：写概述</strong><br>在对应文章对 front-matter（文章文件最上方以 —分割对区域，是用来指定个别文件的配置变量区域）中添加description变量，其中description变量设置的内容就会被显示在首页上门，其余的文案一律不显示。配置如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo添加分类及标签（在Next主题下）</span><br><span class="line">categories:  Hexo</span><br><span class="line">tags:</span><br><span class="line"></span><br><span class="line">- Hexo</span><br><span class="line">  description: 自建的博客怎么能没有分类和标签呢，所以我就去查了一下怎么去配置分类和标签。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>这一种方法是需要自己写概述，所以比较费事，于是就有了第二种方法。</p>
-<p>方法二：文章截断显示<br>这种方法只需要在对应的文章里，想要展示的文章后添加以下标签就可以了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然后首页就会显示在这个标签以上的所有内容，隐藏文章下面的所有内容。</p>
+    <title>错误解决</title>
+    <url>/2024/05/01/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<p>﻿<strong>hexo发生error：spawn failed错误的解决方法</strong></p>
+<p>1. 删除 .deploy_git文件夹;</p>
+<p>2. 输入 git config –global core.autocrlf false</p>
+<p>3. 然后，依次执行：</p>
+<p>hexo clean</p>
+<p>hexo g</p>
+<p>hexo d</p>
 ]]></content>
   </entry>
   <entry>
@@ -100,7 +94,7 @@
 <ol>
 <li><strong>构建前缀函数（Prefix Function）</strong>：<ul>
 <li>首先，对于模式字符串，构建一个前缀函数（也称为失配函数或部分匹配表），用来存储在每个位置上的最长前缀后缀的长度。这个函数能帮助我们在匹配失败时快速移动模式字符串。</li>
-<li>前缀函数的定义如下：对于模式字符串P的每个位置 i，前缀函数P[i]定义为：以i结尾的字符串的最长相等前缀的后缀长度。例如，对于模式字符串ababaca，其前缀函数为[0,1,1,2,3,4,1]，对于第四个位置上的b，前缀为ab，其中前缀的后缀与前缀的前缀匹配的是a和a，所以next[4]&#x3D;1+1&#x3D;2；对于第五个位置，前缀为abab，此时最长前缀匹配为ab,则next[5] &#x3D; 3.</li>
+<li>前缀函数的定义如下：对于模式字符串P的每个位置 i，前缀函数P[i]定义为：以i结尾的字符串的最长相等前缀的后缀长度。例如，对于模式字符串’ababaca’，其前缀函数为[0,1,1,2,3,4,1]，对于第四个位置，前缀为’ab’，其中前缀的后缀与前缀的前缀匹配的是’a’和’a’，所以next[4]&#x3D;1+1&#x3D;2；对于第五个位置，前缀为’abab’，此时最长前缀匹配为’ab’,则next[5] &#x3D; 3.</li>
 </ul>
 </li>
 <li><strong>构建前缀函数的过程</strong>：<ul>
@@ -127,15 +121,21 @@
 ]]></content>
   </entry>
   <entry>
-    <title>错误解决</title>
-    <url>/2024/05/01/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[<p>﻿<strong>hexo发生error：spawn failed错误的解决方法</strong></p>
-<p>1. 删除 .deploy_git文件夹;</p>
-<p>2. 输入 git config –global core.autocrlf false</p>
-<p>3. 然后，依次执行：</p>
-<p>hexo clean</p>
-<p>hexo g</p>
-<p>hexo d</p>
+    <title>显示摘要</title>
+    <url>/2024/05/01/%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81/</url>
+    <content><![CDATA[<p>1.配置主题<br>首先打开主题的配置文件_config.yml，该文件在博客文件夹的themes\next_config.yml路径下，打开后找到excerpt_description这个配置并设置为true,如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line">excerpt_description: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+<p>然后还需要对对应对文章进行设置，有两种方法</p>
+<p><strong>方法一：写概述</strong><br>在对应文章对 front-matter（文章文件最上方以 —分割对区域，是用来指定个别文件的配置变量区域）中添加description变量，其中description变量设置的内容就会被显示在首页上门，其余的文案一律不显示。配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo添加分类及标签（在Next主题下）</span><br><span class="line">categories:  Hexo</span><br><span class="line">tags:</span><br><span class="line"></span><br><span class="line">- Hexo</span><br><span class="line">  description: 自建的博客怎么能没有分类和标签呢，所以我就去查了一下怎么去配置分类和标签。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>这一种方法是需要自己写概述，所以比较费事，于是就有了第二种方法。</p>
+<p>方法二：文章截断显示<br>这种方法只需要在对应的文章里，想要展示的文章后添加以下标签就可以了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后首页就会显示在这个标签以上的所有内容，隐藏文章下面的所有内容。</p>
 ]]></content>
   </entry>
 </search>
