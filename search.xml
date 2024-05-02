@@ -76,45 +76,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>KMP算法</title>
-    <url>/2024/05/02/KMP%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="暴力匹配算法（Brute-Force）"><a href="#暴力匹配算法（Brute-Force）" class="headerlink" title="暴力匹配算法（Brute Force）"></a><strong>暴力匹配算法（Brute Force）</strong></h2><p>也称为朴素字符串匹配算法，通过逐个比较文本中的字符与模式串中的字符，当遇到不匹配时，移动到下一个位置继续比较。虽然简单，但在最坏情况下需要 O(m * n) 的时间复杂度，其中 m 是模式串长度，n 是文本串长度。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Index</span><span class="params">(SString S ;SString T)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=S.length &amp;&amp; j&lt;=S.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span> || S.ch[i] == T.ch[j])&#123;</span><br><span class="line">            ++i;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            i = i-j+<span class="number">2</span>;</span><br><span class="line">            j = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j &gt; T.length)</span><br><span class="line">        <span class="keyword">return</span> i - T.length;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ol>
-<li><strong>构建前缀函数（Prefix Function）</strong>：<ul>
-<li>首先，对于模式字符串，构建一个前缀函数（也称为失配函数或部分匹配表），用来存储在每个位置上的最长前缀后缀的长度。这个函数能帮助我们在匹配失败时快速移动模式字符串。</li>
-<li>前缀函数的定义如下：对于模式字符串P的每个位置 i，前缀函数P[i]定义为：以i结尾的字符串的最长相等前缀的后缀长度。例如，对于模式字符串’ababaca’，其前缀函数为[0,1,1,2,3,4,1]，对于第四个位置，前缀为’ab’，其中前缀的后缀与前缀的前缀匹配的是’a’和’a’，所以next[4]&#x3D;1+1&#x3D;2；对于第五个位置，前缀为’abab’，此时最长前缀匹配为’ab’,则next[5] &#x3D; 3.</li>
-</ul>
-</li>
-<li><strong>构建前缀函数的过程</strong>：<ul>
-<li>以模式字符串的每个位置为基准，计算从该位置向左的所有真前缀与真后缀的最长匹配长度。这个过程可以通过动态规划来实现，时间复杂度为O(m)，其中m是模式字符串的长度。</li>
-</ul>
-</li>
-<li><strong>匹配过程</strong>：<ul>
-<li>在匹配过程中，我们从主字符串的开头开始，以及从模式字符串的开头开始，逐字符进行比较。</li>
-<li>当主字符串的字符与模式字符串的字符不匹配时，利用前缀函数来确定模式字符串应该移动的位置。这样，我们避免了对已经比较过的字符进行重新比较，从而提高了匹配效率。</li>
-</ul>
-</li>
-<li><strong>匹配过程的实现</strong>：<ul>
-<li>在匹配过程中，如果主字符串的字符与模式字符串的字符匹配，则继续比较下一个字符。</li>
-<li>如果出现不匹配的情况，则根据前缀函数计算模式字符串应该移动的位置，而不是简单地将模式字符串向后移动一位。</li>
-</ul>
-</li>
-<li><strong>时间复杂度</strong>：<ul>
-<li>KMP算法的时间复杂度是O(n + m)，其中n是主字符串的长度，m是模式字符串的长度。这是因为KMP算法在匹配过程中避免了不必要的字符比较，而且前缀函数的构建只需要O(m)的时间。</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNext</span><span class="params">(SString T , <span class="type">int</span> next[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> <span class="number">1</span>=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; T.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">0</span> || T.ch[i] == T.ch[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">            next[i] = j;	<span class="comment">//若pi == pj ,则next[j + 1] = j;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j =next[j];	<span class="comment">//否则令 j= next[j];</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Index_KMP</span><span class="params">(SString S ,SString T ,<span class="type">int</span> next[])</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=S.length &amp;&amp; j&lt;=S.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span> || S.ch[i] == T.ch[j])&#123;</span><br><span class="line">            ++i;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j = next[j];	<span class="comment">//i不需要回溯</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j &gt; T.length)</span><br><span class="line">        <span class="keyword">return</span> i - T.length;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNextval1</span><span class="params">(SString T , <span class="type">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; T.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">0</span> || T.ch[i] == T.ch[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">            <span class="keyword">if</span>(T.ch[i] != T.ch[j])</span><br><span class="line">            	nextval[i] = j;	<span class="comment">//若pi == pj ,则next[j + 1] = j;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                nextval[i] = nextval[next[j]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j =next[j];	<span class="comment">//否则令 j= next[j];</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNextval2</span><span class="params">(SString T , <span class="type">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    nextval[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; T.length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (T.ch[i] != T.ch[next[i]])</span><br><span class="line">            nextval[i] = next[i];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            nextval[i] = nextval[next[i]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-  </entry>
-  <entry>
     <title>显示摘要</title>
     <url>/2024/05/01/%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81/</url>
     <content><![CDATA[<p>1.配置主题<br>首先打开主题的配置文件_config.yml，该文件在博客文件夹的themes\next_config.yml路径下，打开后找到excerpt_description这个配置并设置为true,如下代码：</p>
@@ -142,6 +103,52 @@
 <p>hexo clean</p>
 <p>hexo g</p>
 <p>hexo d</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>KMP算法</title>
+    <url>/2024/05/02/KMP%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="暴力匹配算法（Brute-Force）"><a href="#暴力匹配算法（Brute-Force）" class="headerlink" title="暴力匹配算法（Brute Force）"></a><strong>暴力匹配算法（Brute Force）</strong></h2><p>也称为朴素字符串匹配算法，通过逐个比较文本中的字符与模式串中的字符，当遇到不匹配时，移动到下一个位置继续比较。虽然简单，但在最坏情况下需要 O(m * n) 的时间复杂度，其中 m 是模式串长度，n 是文本串长度。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Index</span><span class="params">(SString S ;SString T)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=S.length &amp;&amp; j&lt;=S.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span> || S.ch[i] == T.ch[j])&#123;</span><br><span class="line">            ++i;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            i = i-j+<span class="number">2</span>;</span><br><span class="line">            j = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j &gt; T.length)</span><br><span class="line">        <span class="keyword">return</span> i - T.length;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ol>
+<li><strong>构建前缀函数（Prefix Function）</strong>：<ul>
+<li>首先，对于模式字符串，构建一个前缀函数（也称为失配函数或部分匹配表），用来存储在每个位置上的最长前缀后缀的长度。这个函数能帮助我们在匹配失败时快速移动模式字符串。</li>
+<li>前缀函数的定义如下：对于模式字符串P的每个位置 i，前缀函数P[i]定义为：以i结尾的字符串的最长相等前缀的后缀长度。例如，对于模式字符串<code>ababaca</code>，其前缀函数为[0,1,1,2,3,4,1]，对于第四个位置，前缀为<code>ab</code>，其中前缀的后缀与前缀的前缀匹配的都是<code>a</code>，所以next[4]&#x3D;1+1&#x3D;2；对于第五个位置，前缀为<code>abab</code>，此时最长前缀匹配为<code>ab</code>,则next[5] &#x3D; 3。</li>
+</ul>
+</li>
+<li><strong>构建前缀函数的过程</strong>：<ul>
+<li>以模式字符串的每个位置为基准，计算从该位置向左的所有真前缀与真后缀的最长匹配长度。这个过程可以通过动态规划来实现，时间复杂度为O(m)，其中m是模式字符串的长度。</li>
+</ul>
+</li>
+<li><strong>匹配过程</strong>：<ul>
+<li>在匹配过程中，我们从主字符串的开头开始，以及从模式字符串的开头开始，逐字符进行比较。</li>
+<li>当主字符串的字符与模式字符串的字符不匹配时，利用前缀函数来确定模式字符串应该移动的位置。这样，我们避免了对已经比较过的字符进行重新比较，从而提高了匹配效率。</li>
+</ul>
+</li>
+<li><strong>匹配过程的实现</strong>：<ul>
+<li>在匹配过程中，如果主字符串的字符与模式字符串的字符匹配，则继续比较下一个字符。</li>
+<li>如果出现不匹配的情况，则根据前缀函数计算模式字符串应该移动的位置，而不是简单地将模式字符串向后移动一位。</li>
+</ul>
+</li>
+<li><strong>时间复杂度</strong>：<ul>
+<li>KMP算法的时间复杂度是O(n + m)，其中n是主字符串的长度，m是模式字符串的长度。这是因为KMP算法在匹配过程中避免了不必要的字符比较，而且前缀函数的构建只需要O(m)的时间。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNext</span><span class="params">(SString T , <span class="type">int</span> next[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> <span class="number">1</span>=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; T.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">0</span> || T.ch[i] == T.ch[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">            next[i] = j;	<span class="comment">//若pi == pj ,则next[j + 1] = j;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j =next[j];	<span class="comment">//否则令 j= next[j];</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Index_KMP</span><span class="params">(SString S ,SString T ,<span class="type">int</span> next[])</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=S.length &amp;&amp; j&lt;=S.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span> || S.ch[i] == T.ch[j])&#123;</span><br><span class="line">            ++i;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j = next[j];	<span class="comment">//i不需要回溯</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j &gt; T.length)</span><br><span class="line">        <span class="keyword">return</span> i - T.length;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>引入 <code>nextval</code> 数组的优化原理如下：</p>
+<ol>
+<li>当模式串中的某个字符与文本串不匹配时，根据 <code>next</code> 数组中记录的信息，模式串应该移动到的位置可能不是下一个字符，而是某个更加合适的位置。</li>
+<li><code>nextval</code> 数组中记录的信息是：如果在某个位置 i 出现不匹配，模式串应该跳到的位置是 <code>next[i]</code> 所指示的位置，即<code>nextval</code>[next[i]]。</li>
+<li>如果在位置 i 出现了不匹配，而 <code>T[i]</code> 与 <code>T[next[i]]</code> 相同，那么意味着在模式串的前缀中有一个更短的相同子串，我们可以利用这个信息，避免重复比较。</li>
+<li>这样，当出现不匹配时，我们直接跳到 <code>nextval[j]</code> 的位置开始下一次匹配。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNextval1</span><span class="params">(SString T , <span class="type">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; T.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">0</span> || T.ch[i] == T.ch[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">            <span class="keyword">if</span>(T.ch[i] != T.ch[j])</span><br><span class="line">            	nextval[i] = j;	<span class="comment">//若pi == pj ,则next[j + 1] = j;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                nextval[i] = nextval[next[j]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j =next[j];	<span class="comment">//否则令 j= next[j];</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNextval2</span><span class="params">(SString T , <span class="type">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    nextval[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; T.length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (T.ch[i] != T.ch[next[i]])</span><br><span class="line">            nextval[i] = next[i];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            nextval[i] = nextval[next[i]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
   </entry>
 </search>
