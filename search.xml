@@ -94,18 +94,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>错误解决</title>
-    <url>/2024/05/01/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[<p>﻿<strong>hexo发生error：spawn failed错误的解决方法</strong></p>
-<p>1. 删除 .deploy_git文件夹;</p>
-<p>2. 输入 git config –global core.autocrlf false</p>
-<p>3. 然后，依次执行：</p>
-<p>hexo clean</p>
-<p>hexo g</p>
-<p>hexo d</p>
-]]></content>
-  </entry>
-  <entry>
     <title>KMP算法</title>
     <url>/2024/05/02/KMP%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h2 id="暴力匹配算法（Brute-Force）"><a href="#暴力匹配算法（Brute-Force）" class="headerlink" title="暴力匹配算法（Brute Force）"></a><strong>暴力匹配算法（Brute Force）</strong></h2><p>也称为朴素字符串匹配算法，通过逐个比较文本中的字符与模式串中的字符，当遇到不匹配时，移动到下一个位置继续比较。虽然简单，但在最坏情况下需要 O(m * n) 的时间复杂度，其中 m 是模式串长度，n 是文本串长度。</p>
@@ -149,6 +137,18 @@
 
 
 
+]]></content>
+  </entry>
+  <entry>
+    <title>错误解决</title>
+    <url>/2024/05/01/%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<p>﻿<strong>hexo发生error：spawn failed错误的解决方法</strong></p>
+<p>1. 删除 .deploy_git文件夹;</p>
+<p>2. 输入 git config –global core.autocrlf false</p>
+<p>3. 然后，依次执行：</p>
+<p>hexo clean</p>
+<p>hexo g</p>
+<p>hexo d</p>
 ]]></content>
   </entry>
 </search>
