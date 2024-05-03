@@ -85,7 +85,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -152,6 +152,16 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
   </nav>
 </div>
 
@@ -175,7 +185,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://kimber0419.github.io/2024/05/02/KMP%E7%AE%97%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://kimber0419.github.io/2024/05/03/KMP%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -193,7 +203,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/02/KMP%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">KMP算法</a>
+          <a href="/2024/05/03/KMP%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">KMP算法</a>
         </h2>
 
         <div class="post-meta-container">
@@ -203,15 +213,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2024-05-02 12:20:22" itemprop="dateCreated datePublished" datetime="2024-05-02T12:20:22+08:00">2024-05-02</time>
+      <time title="创建时间：2024-05-03 13:38:29 / 修改时间：13:47:12" itemprop="dateCreated datePublished" datetime="2024-05-03T13:38:29+08:00">2024-05-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-03 12:44:08" itemprop="dateModified" datetime="2024-05-03T12:44:08+08:00">2024-05-03</time>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
     </span>
 
   
@@ -239,10 +252,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>KMP算法，全称为Knuth-Morris-Pratt算法，是一种字符串匹配算法，用于在一个主字符串（text）中查找一个模式字符串（pattern）的出现位置。KMP算法通过利用模式字符串自身的特点，在匹配过程中避免重复的比较，从而提高了匹配效率。</p>
+          <p>Knuth-Morris-Pratt 字符串查找算法，简称为 “KMP 算法”，常用于在一个文本串 S 内查找一个模式串 P 的出现位置，这个算法由Donald Knuth、Vaughan Pratt、James H. Morris 三人于 1977 年联合发表，故取这 3 人的姓氏命名此算法。KMP 方法算法就利用之前判断过的信息，通过一个 next 数组，保存模式串中前后最长公共子序列的长度，每次回溯时，通过 next 数组找到，前面匹配过的位置，省去了大量的计算时间.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2024/05/02/KMP%E7%AE%97%E6%B3%95/">
+              <a class="btn" href="/2024/05/03/KMP%E7%AE%97%E6%B3%95/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -485,9 +498,24 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-05-01 19:23:00 / 修改时间：21:15:34" itemprop="dateCreated datePublished" datetime="2024-05-01T19:23:00+08:00">2024-05-01</time>
+      <time title="创建时间：2024-05-01 19:23:00" itemprop="dateCreated datePublished" datetime="2024-05-01T19:23:00+08:00">2024-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-03 14:08:23" itemprop="dateModified" datetime="2024-05-03T14:08:23+08:00">2024-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
     </span>
 
   
@@ -577,9 +605,24 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-05-01 18:17:53 / 修改时间：21:16:01" itemprop="dateCreated datePublished" datetime="2024-05-01T18:17:53+08:00">2024-05-01</time>
+      <time title="创建时间：2024-05-01 18:17:53" itemprop="dateCreated datePublished" datetime="2024-05-01T18:17:53+08:00">2024-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-03 14:08:14" itemprop="dateModified" datetime="2024-05-03T14:08:14+08:00">2024-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
     </span>
 
   
@@ -607,7 +650,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>冒泡排序算法的介绍</p>
+          <p>最常见的排序算法</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/05/01/C-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">

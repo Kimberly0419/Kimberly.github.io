@@ -3,8 +3,7 @@
   <entry>
     <title>C++冒泡排序</title>
     <url>/2024/05/01/C-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<p>作用：最常见的排序算法</p>
-<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><p>每次遍历时，它都会从前往后依次的比较相邻两个数的大小；如果前者比后者大，则交换它们的位置。这样，一次遍历之后，最大的元素就在数列的末尾！ 采用相同的方法再次遍历时，第二大的元素就被排列在最大元素之前。重复此操作，直到整个数列都有序为止！</p>
+    <content><![CDATA[<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><p>每次遍历时，它都会从前往后依次的比较相邻两个数的大小；如果前者比后者大，则交换它们的位置。这样，一次遍历之后，最大的元素就在数列的末尾！ 采用相同的方法再次遍历时，第二大的元素就被排列在最大元素之前。重复此操作，直到整个数列都有序为止！</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span><span class="comment">//冒泡排序算法</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)<span class="comment">//从0 ~ n-1</span></span><br><span class="line">	&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++)<span class="comment">//从0 ~ n-i-1</span></span><br><span class="line">	        &#123;</span><br><span class="line">                    <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) </span><br><span class="line">                        <span class="comment">//如果第i个元素大于第i+1个元素则交换位置</span></span><br><span class="line">			&#123;</span><br><span class="line">                            <span class="type">int</span> temp = arr[j];</span><br><span class="line">                            arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                            arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -12,6 +11,12 @@
 <h2 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span> <span class="comment">//循环打印数组</span></span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j= <span class="number">0</span>; j&lt;n; j++)</span><br><span class="line">	&#123;  </span><br><span class="line">           cout&lt;&lt;arr[j] &lt;&lt;<span class="string">&quot;  &quot;</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    cout&lt;&lt;endl;  </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span><span class="comment">//冒泡排序算法</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)<span class="comment">//从0 ~ n-1</span></span><br><span class="line">	&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n - i - <span class="number">1</span>; j++)<span class="comment">//从0 ~ n-i-1</span></span><br><span class="line">	        &#123;</span><br><span class="line">                    <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) </span><br><span class="line">                        <span class="comment">//如果第i个元素大于第i+1个元素则交换位置</span></span><br><span class="line">			&#123;</span><br><span class="line">                            <span class="type">int</span> temp = arr[j];</span><br><span class="line">                            arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                            arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="type">int</span> s[<span class="number">10</span>] = &#123;<span class="number">8</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">10</span>,<span class="number">3</span>&#125;;  </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;初始序列：&quot;</span>;  </span><br><span class="line">    <span class="built_in">print</span>(s,<span class="number">10</span>);  </span><br><span class="line">    <span class="built_in">BubbleSort</span>(s,<span class="number">10</span>);  </span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;排序结果：&quot;</span>;  </span><br><span class="line">    <span class="built_in">print</span>(s,<span class="number">10</span>);  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
   </entry>
   <entry>
     <title>C++函数</title>
@@ -74,28 +79,16 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;swap.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">20</span>;</span><br><span class="line">    <span class="built_in">swap</span>(a, b);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a = &quot;</span> &lt;&lt; a &lt;&lt; endl;<span class="comment">//a = 20 </span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;b = &quot;</span> &lt;&lt; b &lt;&lt; endl;<span class="comment">//b = 10</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
-  </entry>
-  <entry>
-    <title>显示摘要</title>
-    <url>/2024/05/01/%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81/</url>
-    <content><![CDATA[<p>1.配置主题<br>首先打开主题的配置文件_config.yml，该文件在博客文件夹的themes\next_config.yml路径下，打开后找到excerpt_description这个配置并设置为true,如下代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line">excerpt_description: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-
-<p>然后还需要对对应对文章进行设置，有两种方法</p>
-<p><strong>方法一：写概述</strong><br>在对应文章对 front-matter（文章文件最上方以 —分割对区域，是用来指定个别文件的配置变量区域）中添加description变量，其中description变量设置的内容就会被显示在首页上门，其余的文案一律不显示。配置如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo添加分类及标签（在Next主题下）</span><br><span class="line">categories:  Hexo</span><br><span class="line">tags:</span><br><span class="line"></span><br><span class="line">- Hexo</span><br><span class="line">  description: 自建的博客怎么能没有分类和标签呢，所以我就去查了一下怎么去配置分类和标签。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>这一种方法是需要自己写概述，所以比较费事，于是就有了第二种方法。</p>
-<p>方法二：文章截断显示<br>这种方法只需要在对应的文章里，想要展示的文章后添加以下标签就可以了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然后首页就会显示在这个标签以上的所有内容，隐藏文章下面的所有内容。</p>
-]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
   </entry>
   <entry>
     <title>KMP算法</title>
-    <url>/2024/05/02/KMP%E7%AE%97%E6%B3%95/</url>
+    <url>/2024/05/03/KMP%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h2 id="暴力匹配算法（Brute-Force）"><a href="#暴力匹配算法（Brute-Force）" class="headerlink" title="暴力匹配算法（Brute Force）"></a><strong>暴力匹配算法（Brute Force）</strong></h2><p>也称为朴素字符串匹配算法，通过逐个比较文本中的字符与模式串中的字符，当遇到不匹配时，移动到下一个位置继续比较。虽然简单，但在最坏情况下需要 O(m * n) 的时间复杂度，其中 m 是模式串长度，n 是文本串长度。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">Index</span><span class="params">(SString S ;SString T)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=S.length &amp;&amp; j&lt;=S.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j==<span class="number">0</span> || S.ch[i] == T.ch[j])&#123;</span><br><span class="line">            ++i;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            i = i-j+<span class="number">2</span>;</span><br><span class="line">            j = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(j &gt; T.length)</span><br><span class="line">        <span class="keyword">return</span> i - T.length;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -138,7 +131,33 @@
 <li>如果在位置 i 出现了不匹配，而 <code>T[i]</code> 与 <code>T[next[i]]</code> 相同，那么意味着在模式串的前缀中有一个更短的相同子串，我们可以利用这个信息，避免重复比较。</li>
 <li>这样，当出现不匹配时，我们直接跳到 <code>nextval[j]</code> 的位置开始下一次匹配。</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNextval1</span><span class="params">(SString T , <span class="type">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; T.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">0</span> || T.ch[i] == T.ch[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">            <span class="keyword">if</span>(T.ch[i] != T.ch[j])</span><br><span class="line">            	nextval[i] = j;	<span class="comment">//若pi == pj ,则next[j + 1] = j;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                nextval[i] = nextval[next[j]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j =next[j];	<span class="comment">//否则令 j= next[j];</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNextval2</span><span class="params">(SString T , <span class="type">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    nextval[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; T.length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (T.ch[i] != T.ch[next[i]])</span><br><span class="line">            nextval[i] = next[i];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            nextval[i] = nextval[next[i]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNextval1</span><span class="params">(SString T , <span class="type">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; T.length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j == <span class="number">0</span> || T.ch[i] == T.ch[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">            <span class="keyword">if</span>(T.ch[i] != T.ch[j])</span><br><span class="line">            	nextval[i] = j;	<span class="comment">//若pi == pj ,则next[j + 1] = j;</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                nextval[i] = nextval[next[j]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> j =next[j];	<span class="comment">//否则令 j= next[j];</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getNextval2</span><span class="params">(SString T , <span class="type">int</span> nextval[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    nextval[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; T.length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (T.ch[i] != T.ch[next[i]])</span><br><span class="line">            nextval[i] = next[i];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            nextval[i] = nextval[next[i]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>显示摘要</title>
+    <url>/2024/05/01/%E6%98%BE%E7%A4%BA%E6%91%98%E8%A6%81/</url>
+    <content><![CDATA[<p>1.配置主题<br>首先打开主题的配置文件_config.yml，该文件在博客文件夹的themes\next_config.yml路径下，打开后找到excerpt_description这个配置并设置为true,如下代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line">excerpt_description: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+<p>然后还需要对对应对文章进行设置，有两种方法</p>
+<p><strong>方法一：写概述</strong><br>在对应文章对 front-matter（文章文件最上方以 —分割对区域，是用来指定个别文件的配置变量区域）中添加description变量，其中description变量设置的内容就会被显示在首页上门，其余的文案一律不显示。配置如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo添加分类及标签（在Next主题下）</span><br><span class="line">categories:  Hexo</span><br><span class="line">tags:</span><br><span class="line"></span><br><span class="line">- Hexo</span><br><span class="line">  description: 自建的博客怎么能没有分类和标签呢，所以我就去查了一下怎么去配置分类和标签。</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>这一种方法是需要自己写概述，所以比较费事，于是就有了第二种方法。</p>
+<p>方法二：文章截断显示<br>这种方法只需要在对应的文章里，想要展示的文章后添加以下标签就可以了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后首页就会显示在这个标签以上的所有内容，隐藏文章下面的所有内容。</p>
+]]></content>
   </entry>
   <entry>
     <title>错误解决</title>
